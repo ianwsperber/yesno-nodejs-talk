@@ -1,0 +1,9 @@
+{
+  "name": "yes",
+  "version": "yes",
+  "description": "Companion code for NodeJS talk 03.11.19",
+  "main": "index.js",
+  "repository": "git@github.com:ianwsperber/yesno-nodejs-talk.git",
+  "author": "Ian Walker-Sperber <ianwsperber@gmail.com>",
+  "license": "MIT"
+}
