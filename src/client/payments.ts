@@ -68,14 +68,14 @@ export default class Payments {
     if (score < MIN_FRAUD_SCORE) {
       throw new Error(`Fraudulent customer detected (${score} < ${MIN_FRAUD_SCORE})`);
     }
-    console.log('HEERE');
+
     const { id: stripeCustomerId }: Stripe.customers.ICustomer = await this.stripe.customers.create(
       {
         email,
         description,
       },
     );
-    console.log('HEERE2');
+
     const { data: userData } = await this.formidableClient.post('/api/v1/users', {
       email,
       description,
