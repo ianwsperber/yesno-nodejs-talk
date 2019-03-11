@@ -5,5 +5,33 @@
   "main": "index.js",
   "repository": "git@github.com:ianwsperber/yesno-nodejs-talk.git",
   "author": "Ian Walker-Sperber <ianwsperber@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "compile": "tsc",
+    "lint": "tslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "check": "yarn lint && yarn test:unit",
+    "test:basic": "yarn jest --testMatch \"<rootDir>/test/0-basic/*.spec.ts\"",
+    "test:yesno:mock": "YESNO_RECORDING_MODE=mock yarn test:yesno",
+    "test:yesno:record": "YESNO_RECORDING_MODE=record yarn test:yesno",
+    "test:yesno:spy": "YESNO_RECORDING_MODE=spy yarn test:yesno",
+    "test:yesno": "yarn jest --testMatch \"<rootDir>/test/3-yesno/*.spec.ts\"",
+    "test:jest": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "stripe": "^6.25.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/nock": "^9.3.1",
+    "@types/stripe": "^6.25.1",
+    "@walmartlabs/nocktor": "^2.0.2",
+    "jest": "^24.3.1",
+    "nock": "^10.0.6",
+    "serverless-offline": "^4.8.1",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333",
+    "yesno-http": "0.0.7-beta.0"
+  }
 }

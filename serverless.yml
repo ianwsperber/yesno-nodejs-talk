@@ -1,0 +1,49 @@
+service: ${self:custom.service}
+
+package:
+  exclude:
+    - "**"
+  individually: true
+
+custom:
+  service: sls-yesno-seattle-nodejs-talk
+  region: us-east-1
+  stage: prod
+  
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${self:custom.region}
+  stage: ${self:custom.stage}
+  environment:
+    NODE_ENV: ${self:custom.stage}
+    SERVICE_NAME: ${self:custom.service}
+  tags:
+    service: yesno-nodejs-talk
+
+functions:
+  fraud:
+    timeout: 30
+    memorySize: 128
+    handler: src/server/function-fraud.handler
+    package:
+      include:
+        - ./src/server/function-fraud.js
+    events:
+      - http:
+          path: /api/v1/fraud
+          method: POST
+  create-user:
+    timeout: 30
+    memorySize: 128
+    handler: src/server/function-create-user.handler
+    package:
+      include:
+        - ./src/server/function-create-user.js
+    events:
+      - http:
+          path: /api/v1/users
+          method: POST
