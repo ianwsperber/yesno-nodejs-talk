@@ -11,6 +11,4 @@ export async function sample() {
     deviceInfo: 'foobar',
     email: 'example@example.com',
   });
-
-  console.log('Customer', customer);
 }
