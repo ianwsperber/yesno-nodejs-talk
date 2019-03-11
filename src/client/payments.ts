@@ -20,6 +20,10 @@ export interface ICreateCustomer {
   email: string;
 }
 
+export interface IUser extends ICreateCustomer {
+  id: string;
+}
+
 export default class Payments {
   private readonly stripe: Stripe;
   private readonly formidableClient: AxiosInstance;
@@ -52,11 +56,7 @@ export default class Payments {
    * 2. Add customer to stripe
    * 3. Save user information, including stripe customer id, to users service
    */
-  public async createCustomer({
-    deviceInfo,
-    description,
-    email,
-  }: ICreateCustomer): Promise<unknown> {
+  public async createCustomer({ deviceInfo, description, email }: ICreateCustomer): Promise<IUser> {
     const {
       data: { score },
     } = await this.formidableClient.post('/api/v1/fraud', {
@@ -82,6 +82,7 @@ export default class Payments {
       stripeCustomerId,
     });
 
-    return userData;
+    // We really ought to validate before casting
+    return userData as IUser;
   }
 }
