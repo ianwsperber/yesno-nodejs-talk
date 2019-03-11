@@ -2,8 +2,6 @@ import Payments from '../../src/client/payments';
 import * as testConfig from '../config';
 
 describe('Unit test', () => {
-  const mockId = 'mock-id';
-  const mockStripeId = 'mock-stripe-id';
   let payments: Payments;
 
   beforeEach(() => {
@@ -21,8 +19,8 @@ describe('Unit test', () => {
     expect(user).toEqual({
       description: payload.description,
       email: payload.email,
-      id: mockId,
-      stripeId: mockStripeId,
+      id: expect.any(Number),
+      stripeCustomerId: expect.any(String),
     });
   });
 });

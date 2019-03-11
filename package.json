@@ -14,7 +14,7 @@
     "test:yesno:mock": "YESNO_RECORDING_MODE=mock yarn test:yesno",
     "test:yesno:record": "YESNO_RECORDING_MODE=record yarn test:yesno",
     "test:yesno:spy": "YESNO_RECORDING_MODE=spy yarn test:yesno",
-    "test:yesno": "yarn jest --testMatch \"<rootDir>/test/3-yesno/*.spec.ts\"",
+    "test:yesno": "yarn jest --testMatch \"<rootDir>/test/1-yesno/*.spec.ts\"",
     "test:jest": "jest"
   },
   "dependencies": {
